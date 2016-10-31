@@ -13,12 +13,12 @@ License: GPL-2
 """
 
 class FleschKincaid:
-    def __init__(self, text, locale='en_GB'):
+    def __init__(self, text, locale='en_GB', nltk_language='english'):
         from readability_score.common import getTextScores, getMinimumAgeFromUsGrade
 
         self.us_grade = 0
         self.min_age = 0
-        self.scores = getTextScores(text, locale)
+        self.scores = getTextScores(text, locale, nltk_language=nltk_language)
         self.setGrade()
         self.min_age = getMinimumAgeFromUsGrade(self.us_grade)
 
