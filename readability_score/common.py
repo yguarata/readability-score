@@ -10,7 +10,7 @@ License: GPL-2
 """
 from __future__ import division
 
-def getTextScores(text, locale='en_GB', simplewordlist=[]):
+def getTextScores(text, locale='en_GB', simplewordlist=[], nltk_language='english'):
     """
     Calculates several text scores based on a piece of text.
     A custom locale can be provided for the hyphenator, which
@@ -45,9 +45,9 @@ def getTextScores(text, locale='en_GB', simplewordlist=[]):
               }
     
     if isinstance(text,unicode):
-        sentences = sent_tokenize(text.encode('utf8'))
+        sentences = sent_tokenize(text.encode('utf8'), language=nltk_language)
     else:
-        sentences = sent_tokenize(text)
+        sentences = sent_tokenize(text, language=nltk_language)
     
     scores['sent_count'] = len(sentences)
 
